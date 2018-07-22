@@ -25,11 +25,11 @@ object UsersAnalyzer {
 
     //    userDataFrame.show(10)
     spark.stop()
-  }
+}
 
   def bySQL(spark: SparkSession, df: DataFrame): Unit = {
     df.createTempView("users");
-    val sql = "select * from users where UserId<>'userId'";
+    val sql = "select UserId,count(*) count from users where UserId<>'userId' group by UserId";
     spark.sql(sql).show(10);
   }
 
