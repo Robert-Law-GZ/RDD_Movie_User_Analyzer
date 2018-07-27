@@ -51,6 +51,7 @@ object InsertDataToHbase {
       Student(name, age, gender)
     })
 
+
     import spark.implicits._
     val dataSet = spark.createDataset[Student](newRDD)
     dataSet.show()
