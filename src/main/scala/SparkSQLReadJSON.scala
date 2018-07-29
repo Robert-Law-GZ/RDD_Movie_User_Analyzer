@@ -12,7 +12,11 @@ object SparkSQLReadJSON {
     // For implicit conversions like converting RDDs to DataFrames
     import spark.implicits._
     val df = spark.read.json("src/main/resources/examples/people.json")
-    df.show()
+    df.printSchema()
+
+    df.select("Name").show();
+    df.select($"Name", $"AGE" + 1).show()
+    df.filter($"age">19).show()
 
   }
 
